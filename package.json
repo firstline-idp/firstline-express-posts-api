@@ -1,0 +1,27 @@
+{
+  "name": "firstline-express-posts-api",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Firstline",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/firstline-idp/firstline-express-posts-api.git"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "start": "nest start",
+    "start:dev": "nest start --watch"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "jwks-rsa": "^3.0.1",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1"
+  }
+}
+
