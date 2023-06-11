@@ -3,11 +3,17 @@ const express = require('express');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const { randomUUID } = require('crypto');
+const cors = require('cors');
 require('./middleware/auth.js')();
 
 const port = process.env.PORT;
 
 const app = express();
+app.use(
+  cors({
+    origin: '*',
+  }),
+);
 app.use(passport.initialize());
 app.use(bodyParser.json());
 
@@ -79,9 +85,11 @@ app.delete(
   (req, res) => {
     const id = req.params.id;
     const user = req.user;
-    posts_ = posts_.filter(
+    const idx = posts_.findIndex(
       (post) => post.id === id && post.createdBy === user.sub,
     );
+    if (idx > -1) posts_.splice(idx, 1);
+    else throw Error(`Post with id ${id} does not exist!`);
 
     res.sendStatus(200);
   },
