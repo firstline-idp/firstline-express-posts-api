@@ -91,7 +91,7 @@ app.delete(
     if (idx > -1) posts_.splice(idx, 1);
     else throw Error(`Post with id ${id} does not exist!`);
 
-    res.sendStatus(200);
+    res.sendStatus(204);
   },
 );
 
